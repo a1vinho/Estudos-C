@@ -1,0 +1,119 @@
+- Na linguagem C temos um conceito muito importante para a maiorias dos nossos programas na linguagem.O operador bitwise ou bit a bit manipula diretamente os bits dos dados tipos inteiro na mémoria.Eles são essenciais para otimizar cálculos, testar e alterar flags ou programar microcontroladores.
+- Os operadores bit a bit funciona pegando dois ou mais valores numericos e comparando cada bit de dois ou mais numeros. {
+
+    - Por exemplo,digamos que estamos utilizando o operador & 
+    5 em binário é 0101
+
+    3 em binário é 0011
+    0 & 1 = 0;
+    0 & 0 = 0;
+    1 & 1 = 1;
+
+    - Teremos o resultado em decimal de 1,isso por que a comparação nos retornou o valor binario de (0001);
+    - Os bits comparando só irá resulta em 1,se ambos os bits comparados forem 1,caso contrario irá retorna 0. Em outras palavras,o resultado da operação AND bit a bit é 1 se os bits correspondentes de dois operandos forem 1. Se qualquer um dos bits de um operando for 0 , o resultado do bit correspondente será avaliado como 0 .
+}
+
+* Explicando os principais operadores bit a bit da linguagem C {
+    - and (&): {
+        - Como vimos acima,esse operador só irá resulta em 1 se ambos os bits comparados forem 1,caso contrario será 0 
+
+        12 = 00001100 (em binário)
+        25 = 00011001 (em binário)
+
+        Operação de bits de 12 e 25
+        00001100
+        & 00011001
+        ________
+        00001000 = 8 (em decimal)
+
+        - Além do mais podemos descobrir se um numero é impar ou par,utilizando o operador &
+
+        int num = 7;
+        if (num & 1) {
+            printf("O numero eh impar\n");
+        } else {
+            printf("O numero eh par\n");
+        }
+        - Todo numero impar em binário termina com 1 
+    }
+    - or (|): {
+        - Esse operador é utilizando em comparações bit a bit,diferente do and,que precisa que dois bits de dois numeros correspondente seja 1 para retorna 1.Esse operador precisa que apenas um dos bits dos numeros seja um para retorna um,enquanto o outro bit que está sendo comparado possa ser zero.
+        - Por exemplo.
+
+        0 | 0 = 0
+
+        1 | 0 = 1
+
+        1 | 1 = 1
+        - Diferente do and,os dois bits não precisa ser um,apenas um deles precisa.
+
+        0101  (5) 
+      | 0011  (3)
+        ------
+        0111  (Resultado: 7)
+    }
+    3 - or exclusivo (^ - XOR) {
+        - Esse operador é responsável por compara os bits de valores diferentes,por exemplo,ele retorna um caso os bits comparados seja diferente,se ambos forem iguais (tanto 0 quanto 1),ele retorna 0.
+
+        0 ^ 0 = 0
+
+        1 ^ 1 = 0
+
+        1 ^ 0 = 1
+
+        - Exemplo pratico: 
+
+        0101  (5)
+      ^ 0011  (3)
+        ------
+        0110  (Resultado: 6)
+    }
+    4 - not (~) {
+        - Esse operador é unario,ou seja,ele atua apenas em um único numero,ele é responsável por inverter todos os bits dentro de um numero.Tudo que for zero vira um e tudo que for um vira zero.
+        
+        ~7 = -8
+
+        ~ 00000101 (5)
+        ----------
+        11111010 (Resultado: -6, devido ao sistema de complemento de dois)
+    }
+    5 - deslocamento para esquerda (<<) {
+        - Esse operador é responsável por move todos os bits de um valor para esquerda,pelo numero de posições especificado,por exemplo (3 << 1).Nesse exemplo,estamos movendo todos os bits do valor 3 uma casa para esquerda.
+        - Move um bit de um determinado valor uma casa para esquerda,é o mesmo que multiplicamos o valor por 2 (3 << 1 = 6, 3 * 2 = 6).Os espaços vazio que surgem na direita,são preenchidos com zero
+
+
+        Decimal: 19 << 3 = 152
+        Binário:  0b00010011 << 3 = 0b10011000
+
+
+        5 = 0101
+        0101 << 1  => vira =>  1010 (Resultado: 10)
+
+        - Quando o bit ultrapassar as bordas de um numero,ele simplesmente é removido.O recomendado antes de qualquer deslocamento é saber o valor em bits,para saber o quanto podemos deslocar 
+    }
+    4 - deslocamento para direita (>>) {
+        - Esse operador funciona como um inverso do anterior,responsável por deslocar os bits de um determinado valor para direita,dado numero de posições especifico.
+        - Quando deslocamos um bit para direita de um determinado valor,é o mesmo que dividimos esse valor por 2 (3 >> 1 = 1,3 / 2 = 1)
+        - Esse operador funciona praticamente da mesma forma que o anterior,invertendo apenas o lado.
+
+        Decimal: 19 >> 2 = 4
+        Binário:  0b10011 >> 2 = 0b00100
+    }
+}
+
+* Agora que conseguimos entender os operadores bit a bit,vamos entender suas principais utilidades e onde ele é utilizado {
+    1 - Mascaras de bits (bitmask): {
+        - Os operadores bitwise são utilizados em sistemas ou hardaware onde a memoria é altamente limitada e gritica.Ao invés de gastamos memória com váriavel int (32 bits = 4 bytes).Podemos simplemente utilizamos os operadores bitwise para guardar várias opções diferentes em uma única váriavel.
+    }
+    2 - Perfomance extrema {
+        - Operações bitwise são executadas diretamente pelo hardware do processador em um único ciclo de clock. Multiplicar ou dividir por potências de 2 usando << e >> costumava ser muito mais rápido do que usar os operadores * e /. Embora os compiladores modernos já façam essa otimização sozinhos, o bitwise ainda é crucial em algoritmos de criptografia e compressão de dados (como arquivos .ZIP ou imagens .PNG).
+    }
+    3 - Engenharia Reversa e Programação de Microcontroladores {
+        - Se você estiver programando um Arduino ou um microcontrolador ARM para ler um sensor, os dados geralmente chegam da fiação serial todos "juntos" em pacotes de bytes. Você precisará usar deslocamento (>>) e máscaras (&) para separar, por exemplo, os 4 bits que controlam a temperatura dos 4 bits que controlam a umidade no mesmo byte recebido.
+    }
+}
+
+- Os operadores bitwise são um dos conceitos mais importante da linguagem C,isso por que eles nós permite manipular bits bruto,nos dados mais poder do que as operações comuns...
+
+
+fonte: https://imasters.com.br/desenvolvimento/conheca-os-operadores-bitwise-bit-bit

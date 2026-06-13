@@ -1,0 +1,50 @@
+A linguagem C tem uma estrutura altamente fundamental,chamada de estruturas condicionais (if,else else if).Esse tipo de estrutura permite que nosso código ou programa consiga toma decisões e execute blocos diferentes de código.Assim como em outras linguagem,nos baseamos em condições,verificando se essa condição é verdadeira ou falsa,dependendo da condição blocos diferentes serão executado.
+
+O bloco if avalia uma condição. Se for verdadeira, o código interno é executado. Se for falsa, o programa pula para o bloco else e executa o código alternativo. {
+    - Abaixo está um código que verifica se uma pessoa é ou não maior de idade.
+
+    #include <stdio.h>
+
+    int main() {
+        int idade = 18;
+
+        if (idade >= 18) {
+            printf("Voce e maior de idade.\n");
+        } else {
+            printf("Voce e menor de idade.\n");
+        }
+
+        return 0;
+    }
+}
+
+- Além do bloco if,temos os operadores de comparação.Esses operadores são utilizados dentro da estrutura if {
+    == : Igual a
+    != : Diferente de
+    > : Maior que
+    < : Menor que
+    >= : Maior ou igual a
+    <= : Menor ou igual a
+}
+
+- Nas condições em C,temos a palavra chave else if.Essa palavra-chave é uma intrução para uma sequencia de condições aninhadas {
+
+    #include <stdio.h>
+
+    int main(void) {
+        int n = 5;
+
+        if(n == 5) {
+            printf("n é igual a 5!\n");
+        } 
+        else if (n > 5) {
+            printf("n é maior que 5!\n");
+        }
+
+        return 0;
+    }
+}
+
+- Uma observação muito importante da linguagem C,todo valor com representação zero é visto como falso,qualquer valor diferente de zero é considerado verdadeiro.A linguagem C não possui palavras booleanas nativas,como true ou false.Quando você faz um teste lógico (ex: 5 > 2), a linguagem retorna 1 para verdadeiro e 0 para falso.
+
+- Para deixar o código mais legível (aproximando-se de outras linguagens), você pode importar a biblioteca <stdbool.h>. Ela permite usar as palavras true e false diretamente, embora o computador continue tratando-as nos bastidores como 1 e 0.

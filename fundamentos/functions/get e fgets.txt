@@ -1,0 +1,51 @@
+- Na linguagem C temos outras funções além da scanf que nós permite ler dados da entrada padrão do usuário (stdin).Temos duas funções famosas que são alternativas a função scanf.As duas funções tem seus nomes parecidos,mas elas possuem diferenças cruncias de segurança entre si.
+
+* Explicando ambas as funções: {
+    1 - get(const char *text): {
+        - A função get é uma função classica e antiga das primeiras versões da linguagem C.Ela perdeu suporte e foi removida da linguagem em 2011 por graves problemas de segurança.Dando espaços as funções mais modernas como fgets e scanf.Ela caracter por caracter até encontra uma quebra de linha. \n
+        - A utilização da função era rapida e mais nada seguro,isso por que a função não impedia a quantidade de bytes que uma váriavel deveria receber,isso causa serios problemas de segurança no programa,como buffer overflow (estouro de memoria),corrupção de dados e etc...
+
+
+        #include <stdio.h>
+        int main()
+        {
+            char buffer[10];
+            printf("Entre com o seu nome");
+            gets(buffer);
+            printf("O nome: %s", buffer);
+            return 0;
+        }
+        - Caso o usuário digite um valor maior que 10 bytes,por exemplo um valor de 14 bytes.Os bytes restantes irão para memoria subsequente,podendo reescrever variaveis e causa perda de dados.
+    }
+    2 - fgets(text,size,stdin) {
+        - Essa função é a mais recomendada quando trabalhamos com entradas de usuário,isso por que ela é a função mais segura quando se trata de receber dados via teclado.Diferente da função get,essa função nós permite dize o tamanho exato de bytes que desejamos receber e armazena na string.Essa espcificação é o principal fator que impende que nosso código tenha problemas de seguranças como buffer overflow.
+        - A função fgets receber 3 parametros principais. 
+
+        fgets(local_onde_guarda, tamanho_maximo, de_onde_ler);
+        - Abaixo está a explicação de cada um deles 
+
+        * local_onde_guarda: O nome da sua variável string (array de char).
+
+        * tamanho_maximo: O tamanho total do seu array (geralmente usamos o operador sizeof para calcular isso automaticamente).
+
+        * de_onde_ler: O arquivo de onde os dados vêm. Para ler do teclado, usamos a palavra reservada stdin (que significa standard input, ou entrada padrão).
+
+        #include <stdio.h>
+
+        int main(void) {
+            char nome[10];
+
+            printf("Digite seu nome (max 9 letras): ");
+            
+            // fgets lê no máximo 9 caracteres e reserva o último espaço para o '\0'
+            fgets(nome, sizeof(nome), stdin);
+
+            printf("Nome armazenado: %s\n", nome);
+
+            return 0;
+        }
+
+        - Um detalhe importante da função fgets é que ela também salva no buffer a quebra de linha vindo da tecla enter (\n).Isso dependendo da logica do nosso código pode acaba causando problemas de comparação.Para removemos o \n salvo na váriavel utilizamos fruta[strcspn(fruta, "\n")] = '\0';
+    }
+    - Essas são as duas funções mais famosas para ler dados de entrada e strings na linguagem C.
+}

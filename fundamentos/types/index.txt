@@ -1,0 +1,147 @@
+- Na linguagem C temos 5 tipos primitivos baśicos.Eles são a base da linguagem C e nos permite escrever programa e estruturas mais complexas e poderosas.
+
+
+* Explicando os tipos primitivos {
+    - Cada tipo primitivo ocupa um espaço diferente na memoria do computador.Por exemplo,o tipo char ocupa 1 byte na memoria,enquanto o tipo int ocupa 4 bytes.O tamanho dos tipos pode vária dependendo da arquitetura do computador.
+    - A declaração do tipo na linguagem C,é uma parte altamente necessária,isso por que ela diz ao computador,como aquele tipo de dado deve ser tratado especificamente.
+    1 - char: {
+        - Esse tipo é responsável por armazena um único caracter.Os caracters internamente são armazenando como inteiros da tabela ASCII.Esse tipo ocupa 1 byte {
+            char text = "a";
+
+            printf("%c",text) // a
+            printf("%d",text) // code ASCII
+        }
+        - Seu especifcador de formanto nas funções printf e scanf é o %c,além disso os caracteres devem sempre começa com aspas simples. 
+    }
+    2 - int: {
+        - Esse tipo é responsável por armazena valores numericos inteiros,sejam eles positivos ou negativos.Seu tamanho geralmente é de 4 bytes na maioria dos sistemas modernos.
+
+        #include <stdio.h>
+
+        int main() {
+            int idade = 25;
+            int temperatura = -5; // Aceita valores negativos
+            
+            printf("Idade: %d anos. Temperatura: %d graus.\n", idade, temperatura);
+            return 0;
+        }
+        - Seu especifcador de formato é :%d ou %i
+    }
+    3 - float: {
+        - Esse tipo é responsável por armazenar valores numericos de ponto flutuante,o float é necessário quando queremos precisão nas casas decimais,mas queremos economizar memoria.Seu tamanho geralmente é de 4 bytes.
+
+        #include <stdio.h>
+
+        int main() {
+            float altura = 1.75; // Use ponto (.) em vez de vírgula (,)
+            float preco = 19.99;
+            
+            printf("Altura: %.2f metros\n", altura);
+            printf("Preco: R$ %.2f\n", preco);
+            return 0;
+        }
+
+        Especificador de formato: %f (pode ser usado como %.2f para limitar a duas casas decimais).
+    }
+    4 - double: {
+        - Esse tipo é responsável por armazena valores de ponto flutuante,mas com uma precisão ainda maior que o float.O double armazena valores de ponto flutuante com precisão dupla,esse tipo por ter uma precisão maior com valores float,ele é muito utilizando em calculos cientifico e matemáticos.
+        - Mas isso vem com um preço,os tipos double ocupa 8 bytes de memoria,o dobro do tipo float.
+
+        #include <stdio.h>
+
+        int main() {
+            double pi = 3.141592653589793;
+            
+            // Imprimindo com 15 casas decimais
+            printf("Valor preciso de Pi: %.15lf\n", pi); 
+            return 0;
+        }
+
+        - Se rodarmos esse código o tipo double irá ter preservado 15 casas decimais.
+    }
+    5 - void {
+        - Esse tipo é um tipo primitivo especial na linguagem C.Ele significa "sem valor" ou "sem tipo".Não podemos criar váriaveis com esse tipo, a sintaxe irá nos retorna um erro.Mas esse tipo é fundamental na linguagem por 3 motivos principais. {
+            Indicar que uma função não retorna nada:
+
+            Indicar que uma função não recebe parâmetros:
+
+            Ponteiros genéricos (void*): (Conceito mais avançado para apontar para qualquer tipo de dado).
+        } 
+
+        #include <stdio.h>
+
+        // Esta funcao NAO retorna nenhum valor (void) e NAO recebe parametros (void)
+        void exibirMensagem(void) {
+            printf("Ola! Esta eh uma funcao sem retorno.\n");
+        }
+
+        int main() {
+            exibirMensagem(); // Apenas executa a funcao
+            return 0;
+        }
+    }
+
+    - Além dos tipos primitivos básicos a linguagem C,nós fornece modificadores de tipos.Os modificadores de tipos são palavras-chaves que alterar o tamanho em bytes e também o comportamento do tipo.Isso nos da um poder absurdo na linguagem C.Mas como todo poder,vem uma responsabilidade,a linguagem C exige mais cuidados e estudos que grande parte das outras linguagens de programação.
+
+    - A linguagem C fornece uma função importante,chamada sizeof(type),com essa função conseguimos medir e ver o tamanho de cada váriavel ou tipo armazenando na memoria.
+    - Os modificadores são utilizado para adptar a memoria e as váriaveis ao nosso programa.
+    * Explicando os principais modificadores da linguagem C {
+        1 - short: {
+            - Esse modificado serve para reduzir o tamanho na memoria de um tipo inteiro,sabemos que um inteiro normalmente ocupa 4 bytes,dado esse valor ele geralemente ira reduzir pela métade,ou seja, 2 bytes.
+
+            short int a = 2;
+
+            printf("Bytes: %zu\n",sizeof(a));
+
+            - Esse modificador é muito utilizado em sistemas ou programas com espaços limitados,como sistemas embarcados e etc...
+        }
+        2 - long: {
+            - Esse modificador é o inverso de short,ele server para aumentar a quantidade de bytes de memoria sobre um tipo ou váriavel.Geralmente seu uso dobra a quantidade de bytes sobre um tipo.Por exemplo,o tipo int geralemente tem 4 bytes,com o long,os bytes podem aumentar para 8 bytes.O long também aumenta a precisão do tipo.
+            - Além do mais esse modificador tem uma váriavel "long long" para valores absudarmente longos.Esse modificador pode ser usando com o tipo double
+
+            long int a = 3;
+            printf("Bytes: %zu\n",sizeof(a));
+
+            long long int b = 3;
+
+            printf("Bytes: %zu\n",sizeof(a));
+
+            long double t = a;
+
+            printf("Bytes: %zu\n",sizeof(a)); // 16 bytes
+        }
+        3 - unsigned int {
+            - Esse modificador restrigir a utilização de numeros negativos,ou seja,apenas valores positivos podem ser utilizados.Como o bit do sinal negativo não precisa ser utilizado,isso dobra a capacidade do tipo int,permitindo que ele possa armazena numeros muito maiores.
+
+            unsegined int a = -1;
+            printf("%d",a);
+
+            - Aparetemnte nada mudou...Mas vamos mudar o especificador,utlizando o %u (especificador para numeros sem sinal)
+
+            printf("%u",a); 
+            - Quando definimos um valor negativo dentro de um unsegined int,o numero passa por uma conversão enorme.A váriavel agora armazena o valor maximo que cabe nela,logo -1 vira 4.294.967.295.
+
+            * Outra curiosidade interessante do operador unsegined int é na comparação condicional.
+
+            if (a == -1) {
+                printf("Valores iguais");
+            } else {printf("Valores diferentes");};
+
+            - Como a uma conversão na váriavel a para o maior numero possivel,então podemos dizer que a é diferente de -1,correto ?.Errado!A linguagem C tem algumas pegadinhas interessantes.
+            - Como ela ver que estamos comparado um valor unsegined int,com um valor signed int.Então ela faz uma conversão de signed int para unsegined int,isso significa que estamos comparados dois unsegined int,ou seja {
+                if (4294967295 == 4294967295)
+            } 
+        }
+        4 - signed int {
+            - Esse modificado é o padrão dos valores inteiros,com ele podemos armazena tanto valores negativos quanto positivos.
+
+            int a = 1;
+            int b = -1;
+        }
+    }
+}
+
+
+Fonte: https://www.cprogressivo.net/2012/12/Os-tipos-float-e-double-numeros-decimais-reais-em-C.html
+
+fonte: https://www.cprogressivo.net/2013/01/Modificadores-do-tipo-inteiro-int-em-C--short-long-signed-unsigned.html

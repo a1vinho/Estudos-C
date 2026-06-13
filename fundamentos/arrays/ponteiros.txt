@@ -1,0 +1,4 @@
+- Para entendermos melhor os ponteiros,primeiro precisamos relembrar o que são váriaveis na programação.
+- A memória do computador é como se fosse uma grande avenida de casas,cada bytes na memória é como se fosse uma casa,quando criamos uma váriavel estamos armazenando um espaço na memória (uma casa) com um apelido (o nome da váriavel).As váriaveis nada mais são do que referencia aos endereços de mémoria que estamos utilizando naquele momento,estamos dando nomes aos endereços de memória para facilitar leitura,manipulação e etc...
+
+- Na linguagem C os ponteiros são váriaveis normais mais com uma diferença enorme,ao invés de armazena valores comum igual as outras váriaveis,eles são responsáveis por armazena endereços de memórias de outras váriaveis.Criando assim uma especie de atalho para irmos até a váriavel original.

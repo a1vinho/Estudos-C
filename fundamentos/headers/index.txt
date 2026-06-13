@@ -1,0 +1,49 @@
+- Os headers (cabeçalhos) são um dos conceitos mais importantes da linguagem C,os cabeçalhos também chamados de libs,são responsáveis por conectar partes do nosso código,compartilhando lógicas,propriedades e funções.Com isso não precisamos ficar reescrevendo a roda do zero.
+- Os headers são arquivos com extensões .h {
+    stdio.h
+    math.h
+    string.h
+    meubiblioteca.h
+}
+
+- Além disso os headers são responsáveis por guardar declarações de funções,constantes,tipos e etc...Seperando a declaração da implementação (logica real do nosso código),tornando nosso código mais organizado e limpo.Os headers além de guardar nossas declarações,são responsáveis por conectar nosso código e arquivo dentro do nosso programa.
+
+- Os headers são utilizado para compartilhar declarações entre arquivos,organiza nosso código e principalmente informa ao compilador como algo deve ser usando antes da implementação.
+
+- A linguagem C não importa código de outros arquivos igual a outras linguagens,o que existe na diretiva include e na linguagem C é algo chamado preprocessamento. {
+    - O pre processamento é responsável por examinar nosso código antes da compilação,analisando diretivas,quando importamos uma biblioteca seja do sistema ou personalizada em nosso arquivo. O preprocessamento da linguagem faz um "copia e colar" no nosso código.Não é errado pensa nisso como um copia e colar textual.Além do mais podemos ver o código completo após o pre processamento utilizando gcc -E 
+}
+- Os headers da linguagem C é uma interface publica {
+    // soma.h 
+
+    int soma (int a ,int b);
+
+    // soma.c 
+
+    int soma (int a ,int b) {
+        int result = a + b;
+        return result;
+    };
+
+    // main.c 
+
+    #include <stdio.h>
+    #include "soma.h"
+
+    int main () {
+
+        int result = soma(2,3);
+
+        printf("Soma: %d",result);
+
+        return 0;
+    }
+}
+
+- Na linguagem C temos vários headers muito famosos da linguagem que são utilizados na maiorias dos programas.Essas libs nós permite utiliza funções prontas sem que precisemos reescrever a roda {
+    stdio.h: Essa lib é responsável por operações de entrada e saida no nosso código,ela nos permite utiliza funções de saída como printf e de entrada como scanf,além do mais essa lib nós permite utiliza funções para manipulação de arquivos.
+
+    math.h: Lib para operações matematicas.
+    stdlib.h:
+    string.h:
+}

@@ -1,0 +1,36 @@
+- Os operadores aritméticos da linguagem C,são simbolos utilizados para operações matematicas.A linguagem conta com 5 operadores principais para as operações matematicas.
+
+* Explicação de cada operador aritméticos {
+    1 - soma (+): Esse operador é responsável por soma dois ou mais numeros {
+        int a = 2;
+        int b = 3;
+        int soma = a + b;
+
+
+    }
+    2 - subtração (-): Esse operador é responsável por subtrair dois ou mais numeros {
+        int a = 5;
+        int b = 2;
+        int result = a - b;
+    }
+    3 - multiplicação (*): Esse operador é responsável por multiplicar dois ou mais numeros {
+        int a = 10;
+        int b = 2;
+
+        int result = 10 * 2;
+    }
+    4 - divisão (/): Operador responsável por dividir dois ou mais numeros {
+        int a = 10;
+        int b = 2;
+
+        int result = 10 / 2; 
+    }
+    5 - modulo (resto da divisão - %): Esse operador é responsável por nós fornece o resto de uma divsão,na maioria dos casos ele retorna entre 0 e 1 {
+        int a = 10;
+        int b = 2;
+
+        int result = 10 % 2;
+
+        - A logica por trás desse operador é a - (a / b) * b;
+    };
+}

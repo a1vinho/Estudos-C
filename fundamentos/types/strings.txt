@@ -1,0 +1,107 @@
+- Na linguagem C não temos o tipo string diretamente igual a outras linguagem como javascript,python,php e etc...As strings na linguagem C é formada e caracterizada por ser um vetor (array) de caracteres em conjunto.Os textos na linguagem C são manipulados atráves do tipo char.
+- A linguagem C é uma linguagem que diferencia aspas simples de aspas duplas,as aspas simples são utilizadas quando queremos declaras um unico caracter (char - char t = 't').Já as aspas duplas são utilizadas quando queremos declarar uma sequencia de caracteres (char text[] = "javascript").Todas as strings em C são um vetor de caracteres,terminando com um caracter nulo "\0".
+- O chamado caracter nulo "\0" é o principal responsável para a linguagem C sabe onde uma string termina,esse caracter avisa as funções de leitura e escrita onde a string termina,esse caracter também ocupa espaço na memória.Por exemplo,se quisermos guarda uma string "ola",precisariamos reserva uma váriavel com espaço 4 chars e não 3.
+
+Regra de Ouro: Sempre reserve um espaço a mais no tamanho do seu vetor para o caractere nulo \0. Se você esquecer, o programa continuará lendo a memória além do fim da string, gerando lixo eletrônico ou travando o sistema.
+
+* Na linguagem C existe 3 formas principais de definimos uma string {
+    1 - Definindo tamanho fixo {
+        - A linguagem C nos permite criar strings de tamanho fixo,essa forma é útil quando sabemos o tamanho exato da string,além do mais essa forma nós permite alterar os caracters da string,não sendo imutavel.
+        - Esse tipo de crianção de string,deve ter sempre um tamanho extra,esse tamanho é onde será armazenado o caracter nulo.
+
+        char texto[50]; 
+        texto[0] = 'O'; // Você pode alterar cada caractere individualmente
+    }
+    2 - Deixa o compilador contar {
+        - Também utilizado para tamanho de textos ou string conhecidos,podemos utilizar a contagem automatica do compilador.Ou seja o compilador irá contar a quantidade de chars +1 (\0 - char nulo)
+
+        char saudacao[] = "Bem-vindo";
+
+        // o tamanho da string será 10
+        - Uma vez que o programa é compilador o tamanho da string ficara imutavel,ou seja,não iremos conseguir alterar depois
+    }
+    3 - Declaração constante (ponteiro): {
+        - Podemos declarar uma string como constante,ou seja,após sua crianção ela se torna imutavel.Essa string constante fica armazenado em uma área da memoria chamada read-only data (dados somente leitura).Esse espaço fica reservado para strings ou valores que não podem ser alterados durante a execução do programa.
+        - Esse tipo de string é utilizada para valores que não poderão ser alterados durante a execução do nosso código.
+
+        char *msg_erro = "Erro: Conexao falhou!";
+        char *menu_principal = "1. Iniciar\n2. Sair\n";
+    }
+}
+
+- A linguagem C também nos fornece a biblioteca string.h,essa lib é essencial na linguagem,pois nós permite trabalhar com eficiencia e produtividade com strings.Como a linguagem C não possui um tipo nativo para as string,ela simplifica a utilização de vetores de char que termina com caracter nulo "\0" {
+    - Como ela é uma lib padrão da linguagem utilizamos os <> para importa-la #include <string.h>
+
+    * Funções mais importantes da lib string.h 
+
+    1 - strlen(const char *text): {
+        - Essa função é responsável por nós dizer o tamanho exato da string,cortando completamente o caracter nulo "\0"
+
+        char palavra[] = "Gato";
+        int tamanho = strlen(palavra); // Retorna 4
+    }
+    2 - strcmp(str1,str2): {
+        - Essa função é responsável por comparar duas strings e verifica se elas são identicas,caso as strings sejam iguais, a função ira retorna 0.
+        - Essa função é um pouco mais complexas do que imaginamos,ela não apenas retorna 0 ou 1 e sua comparação é feita caracter por caracter,mais especificamente utilizando a tabela ASCII.
+
+        - A função retorna 0 caso as strings seja identicas.
+        - Ela retorna um valor menor que zero,caso a primeira string tenha um caracter de código ASCII menor que o código do caracter da segunda string. {
+            strcmp("abacate", "abacaxe");
+            "t" -> ASCII CODE -> 116;
+            "x" -> ASCII CODE -> 120;
+
+            116 - 120 -> valor negativo
+
+        }
+        - Ela retorna um valor positivo,caso a primeira string tenha um caracter de código ASCII maior que o código do caracter da segunda string. {
+            strcmp("abacaxi", "abacate");
+            "x" -> ASCII CODE -> 120;
+            "t" -> ASCII CODE -> 116;
+
+            120 - 116 -> valor negativo
+        }
+
+        - Além do mais a função diferencia chars maiusculos de minisculos,isso é uma observação muito importante.
+        #include <stdio.h>
+        #include <string.h>
+
+        int main(void) {
+            char senha_correta[] = "secret123";
+            char senha_usuario[] = "secret123";
+
+            // O jeito correto de checar se são iguais é "== 0"
+            if (strcmp(senha_usuario, senha_correta) == 0) {
+                printf("Acesso garantido!\n");
+            } else {
+                printf("Senha incorreta!\n");
+            }
+
+            return 0;
+        }
+    }
+    3 - strcpy(destino,origem): {
+        - Essa função é responsável por copia os dados de uma string para outra string.A copia ocorre com uma string de origem para uma outra string,chamada string de destino.Para usamos a função corretamente precisamos primeiro garantir que a string de destino tenha tamanho suficiente para suporta o conteudo de origem mais o caracter nulo "\0"; 
+
+        #include <stdio.h>
+        #include <string.h> // Necessário para usar strcpy
+
+        int main() {
+            char origem[] = "Curso de Programacao C";
+            char destino[40]; // Certifique-se de que o tamanho é suficiente
+
+            // Copia o conteúdo de 'origem' para 'destino'
+            strcpy(destino, origem);
+
+            printf("String de Origem: %s\n", origem);
+            printf("String de Destino: %s\n", destino);
+
+            return 0;
+        }
+        - Uma observação importante:Caso a váriavel destino seja menor que o conteúdo de origem,ocorrera o famoso erro de buffer overflow.Corrompendo memória e vazando bytes para as váriaveis vizinha,podendo reescrever as variaveis.
+    }
+    - A biblioteca string.h tem muitas funções importante,a fonte da documentação estara embaixo.
+
+    fonte: https://www.cprogressivo.net/2013/03/Aprenda-a-usar-todas-as-funcoes-da-biblioteca-string-h-em-C.html
+}
+
+- Em resumo as string na linguagem C,nada mais são do que arrays de chars.

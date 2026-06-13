@@ -1,0 +1,39 @@
+- Os operadores logicos na linguagem C,são responsáveis por combinar duas ou mais expressões lógicas na linguagem,eles são utilizados em estruturas condicionais,loop e etc...A linguagem C considera qualquer valor diferente de zero como verdadeiro e zero como falso {
+    if (1) {
+        printf("Verdadeiro");
+    } else {
+        printf("Falso");
+    }
+};
+
+* Os principais operadores logicos são {
+    1 - and (&&): {
+        - Esse operador é utilizado quando queremos que duas ou mais expressões sejam verdadeiras.
+
+          int idade = 20;
+          int tem_ingresso = 1; 
+
+          if (idade >= 18 && tem_ingresso) {
+            printf("Acesso permitido!\n");
+        };
+    }
+    2 - or ( || ): {
+        - Esse operador é utilizado quando queremos que apenas uma das expressões seja verdadeira.
+
+        if (idade < 12 || possui_carteirinha) {
+            printf("Você tem direito a meia-entrada.\n");
+        };
+    }
+    3 - negação ( ! ): {
+        - Esse operador é utilizado para inverter um valor booleano,se for falso vira verdadeiro e vice versa. 
+
+         if (!tem_ingresso) {
+            printf("Por favor, compre seu ingresso.\n");
+        }
+    }
+}
+
+O C utiliza um método chamado short-circuit evaluation (avaliação de curto-circuito): {
+    - No &&, se a primeira condição for falsa, a segunda nem é avaliada, pois o resultado já será falso.
+    - No ||, se a primeira condição for verdadeira, a segunda não é executada, pois o resultado já será verdadeiro.
+}

@@ -1,0 +1,99 @@
+- Na linguagem C temos a biblioteca stdio.h,essa lib nos fornece várias funções de entrada e saida (I/O).A biblioteca nos fornece duas funções famosas para trabalhar com entrada e saída de dados,como por exemplo as funções printf e scanf.
+
+* Explicando a utilização da função printf {
+
+    int printf (char *str,...);
+
+    - Essa função é umas das mais utilizadas na linguagem C,ela é responsável por enviar strings e váriaveis formatadas para saida padrão (geralmente terminal ou console).
+    - A função é bem simples de utilizar,além da string utilizamos também os especificadores,são responsáveis por permitir a formatação e dinamica dos dados no console.
+
+    * Por exemplo {
+        - Digamos que queremos imprimir o valor de um inteiro na tela.
+
+        #include <stdio.h>
+
+        int main() {
+
+            int age = 20;
+
+            printf("sua idade é de: %d",age);
+            return 0;
+        }
+
+        - Na função printf temos os especificadores que são utilizados para formatar e imprimir vários tipos de dados diferentes.Quando queremos imprimir um valor inteiro utilizamos o especificador %d,que diz a função que o proximo valor a ser formatado será um inteiro.
+
+        * Principais especificadores de formato da função printf {
+            - %d / %i: Para imprimir um valor inteiro,tanto negativos quanto positivos.
+            - %u: Esse espcificador imprimir apenas valores inteiros sem sinal (positivo),caso tentemos imprimir um valor negativo ele fara uma conversão resultado em um numero extremamente alto.
+            - %f: Imprimir valores de ponto flutuante 
+            - %c: Responsável por imprimir um único caracter (char)
+            - %s: Responsável por imprimir uma string (cadeia de chars) 
+            - %p: Responsável por imprimir valores de ponteiro 
+        }
+    }
+    * Temos também a utilização dos modificadores de formato {
+        - %.2f: Esse espcificador é muito utilizando em conjunto com float e double,ele é responsável por controlar o numeros de casas decimais que será impresso no console,nesse caso será duas casas decimais.
+
+        - Largura mínima: Ex: %5d. Preenche com espaços à esquerda para garantir pelo menos 5 caracteres de largura.
+
+        Alinhamento à esquerda: Ex: %-5d. Alinha o dado à esquerda dentro do espaço reservado.
+    }
+}
+
+* Explicando a utilização da função scanf {
+
+    int scanf (char *str,...);
+
+    - A função scanf é a função principal para operações de entrada (input) no nosso programa,ela é responsável por ler dados da entrada padrão (teclado). {
+        #include <stdio.h>
+        int main()
+        {
+            int testInteger;
+            printf("Enter an integer: ");
+            scanf("%d", &testInteger);  
+            printf("Number = %d",testInteger);
+            return 0;
+        }
+        - Umas das principais caracteristica da função scanf é que ela receber ponteiros como parametros,qualquer parametro que não seja por si so um ponteiro,deve conter o operador &,esse operador fornece o endereço exato da memoria em que a váriavel está armazenada.
+
+        * Principais parametros da função scanf {
+            1 - O primeiro parametro são os especificadores de formato,eles são bem parecidos com a os especificadores da função printf
+            2 - O segundo parametro é um ponteiro,esse ponteiro aponta para o endereço de memoria da váriavel que queremos armazena o valor.
+
+            - Uma observação importante,os especificadores e o tipo da váriavel que desejamos armazena o valor,precisa ser iguais.Assim como no exemplo acima  
+        }
+        - Na função scanf existe duas maneiras de trabalhamos com string {
+            1 - string sem espaço: {
+                char nome[50];
+                printf("Digite seu nome completo: ");
+
+                scanf("%s", nome); // Lê a string (sem &)
+
+                - Esse programa irá parar quando o scanf encontra um espaço na string
+            }
+            2 - string com espaços: {
+                - Se no nosso código desejamos ler strings que contenha espaços sem parar o programa,podemos simplemente utiliza scanf("%[^\n]s", variavel).Esse treço de código é responsável por ler dados do usuário com espaços até uma quebra de linha,sem precisa encerrar o programa.s
+
+                #include <stdio.h>
+
+                int main() {
+                    char frase[100];
+
+                    printf("Digite uma frase: ");
+                    // Lê tudo até o usuário pressionar Enter
+                    scanf("%[^\n]s", frase); 
+
+                    printf("Frase digitada: %s\n", frase);
+
+                    return 0;
+                }
+            }
+        }
+        - Além disso podemos colocar diretamente a quantidade de caracteres que queremos armazena dentro de uma variavel {
+            scanf("%99s", variavel);
+            - Esse código limita o usuário a digita no maximo 99 caracteres.
+        }
+    }
+}
+
+fonte: https://www-programiz-com.translate.goog/c-programming/c-input-output?_x_tr_sl=en&_x_tr_tl=pt&_x_tr_hl=pt&_x_tr_pto=tc

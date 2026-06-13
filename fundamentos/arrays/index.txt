@@ -1,0 +1,41 @@
+- Na linguagem C temos os arrays,uma estrutura de dados muito famosas.Os arrays na linguagem C são estruturas de dados de tamanho fixo que armazena elementos ou dados do mesmo tipo sequenciamente.Os indices nos arrays em C sempre começa com zero.
+- Um array é como um armario com varias gavetas numeradas,onde as gavetas só podem guarda o mesmo tipo de objetos (só meias, só camisas e etc..).Uma das caracteristicas mais importante dos arrays em C seria o armazenamento dos arrays na memoria.A linguagem C armazena os arrays de forma contigua.
+
+* O que é memória contigua ?{
+    - A memória contigua é quando o sistema operacional ou linguagem de programação,separar um bloco de memória para armazena varios dados de maneira sequencial.Quando criamos um array de inteiro de por exemplo 5 elementos.Sabemos em estudos anteriores que na linguagem C,um inteiro ocupa geralmente 4 bytes.Se criamos um array de 5 elementos nosso código teriamos o seguinte calculo (5 x 4 = 20 bytes),teriamos um array de bytes.O sistema iria separar na memória um espaço de 20 bytes para armazena nosso array. 
+}
+
+* Sintaxe básica dos arrays {
+    - A sintaxe baśica dos arrays em C,são muito faceis e legivel.Para inicializamos os arrays fazemos da seguinte forma
+
+    int numbers[5] = {1,2,3,4,5};
+
+    printf("%d",numbers[0]);
+
+    - Podemos também pre-inicializa o array,apesar de que isso não pode ser uma boa pratica,já que na maiorias das vezes pode conter lixo de memoria.
+
+    int numbers[5]; // O array é iniciando mais geralmente com "lixo" de memória
+    - Se quisermos garantia que o array comece zerado utilizamos 
+    int numbers[5] = {0};
+
+    - Os arrays tem tamanhos imutuveis,isso significa que em tempo de compilação,o tamanho do array se torna inalteravel
+}
+
+* Tipos de arrays {
+    - Como vimos antes como declarar e criar um array de inteiros,iremos ver a declaração e crianção de outros tipos de arrays.
+
+    1 - array de string {
+        - Para criar esse tipo de array utilizamos duas maneiras.A primeira seria a crianção de um array bidimesional (ou até multidimesional) ou matrizes.Geralmente esse tipo de array tem duas dimensões (linhas e colunas)
+
+        char names[quantidades_de_linhas][tamanho_maximo_das_palavras];
+
+        * exemplo: char names[3][15] = {"Javascript","Python","PHP"}; -- Esse array terá uma memória de 45 bytes
+        - Como vemos reservamos 3 palavras para guarda palavras de no máximo 15 bytes.Mas e se o array não tiver nenhuma ou poucas palavras de 15 bytes ? Então teremos um desperdicio de memória.
+        - A definição do tamanho máximo dos bytes para as palavras,devem ser definidas corretamente para evitar estouro de memória (buffer overflow)
+
+        - Geralmente quando criamos uma matriz de string,estamos jogando memoria no lixo,isso por que nem todos os dados irão conter a quantidade necessaria definida no inicio da matriz.
+    }
+    2 - Array de ponteiros {
+        - 
+    }
+}

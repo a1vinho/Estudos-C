@@ -1,0 +1,241 @@
+🧠 Roadmap Completo para Aprender C
+🟢 1. Fundamentos da Linguagem (Base sólida)
+
+Aqui você aprende a “falar C”.
+
+Conceitos essenciais:
+
+Estrutura de um programa (main, headers, compilação)
+Tipos primitivos (int, float, char, double)
+Operadores (aritméticos, lógicos, bitwise)
+Controle de fluxo:
+if, else
+switch
+for, while, do while
+Entrada/Saída (printf, scanf)
+
+Prática:
+
+Calculadora no terminal
+Conversor de unidades
+Jogo simples (adivinhação)
+
+👉 Objetivo: conseguir escrever programas pequenos sem travar.
+
+🟡 2. Memória e Ponteiros (o coração do C)
+
+Aqui começa o “nível real” de C.
+
+Conceitos críticos:
+
+Endereços de memória (&)
+Ponteiros (*)
+Ponteiro para ponteiro
+Arrays vs ponteiros
+Strings em C (arrays de char)
+Passagem por valor vs referência
+
+Prática:
+
+Inverter array usando ponteiros
+Implementar funções que modificam valores externamente
+Criar manipulador de strings manual (sem string.h)
+
+👉 Objetivo: entender exatamente onde os dados vivem na memória.
+
+🟠 3. Alocação Dinâmica de Memória
+
+Agora você controla o heap.
+
+Funções importantes:
+
+malloc
+calloc
+realloc
+free
+
+Conceitos:
+
+Stack vs Heap
+Vazamento de memória (memory leak)
+Dangling pointers
+
+Prática:
+
+Criar vetor dinâmico
+Implementar lista encadeada
+Simular um “array que cresce”
+
+👉 Objetivo: parar de depender de tamanhos fixos.
+
+🔵 4. Estruturas de Dados na Mão
+
+Sem bibliotecas — você implementa tudo.
+
+Estruturas:
+
+struct
+Listas encadeadas (simples e dupla)
+Pilha (stack)
+Fila (queue)
+Árvores básicas
+
+Prática:
+
+CRUD em lista encadeada
+Implementar pilha com array e lista
+Árvore binária simples
+
+👉 Objetivo: entender como dados são organizados internamente.
+
+🟣 5. Modularização e Organização de Código
+
+Aqui você começa a programar “como profissional”.
+
+Conceitos:
+
+Separação .h e .c
+#define, macros
+typedef
+Encapsulamento em C
+Compilação com múltiplos arquivos
+
+Ferramentas:
+
+gcc
+make / Makefile
+
+Prática:
+
+Criar biblioteca própria
+Organizar projeto em módulos
+
+👉 Objetivo: escrever código reutilizável e organizado.
+
+🔴 6. Manipulação de Arquivos e Sistema
+
+C começa a tocar o sistema operacional.
+
+Conceitos:
+
+Arquivos (fopen, fread, fwrite, fclose)
+Manipulação de bytes
+Buffers
+Diretórios (com POSIX)
+
+Prática:
+
+Editor de texto simples
+Logger em arquivo
+Parser de arquivos (JSON simplificado, por exemplo)
+
+👉 Objetivo: interagir com o mundo externo.
+
+⚫ 7. Programação de Baixo Nível
+
+Aqui C vira “quase assembly”.
+
+Conceitos avançados:
+
+Bitwise operations avançadas
+Endianness
+Manipulação direta de memória (memcpy, etc.)
+Layout de memória de structs
+Alinhamento (padding)
+
+Prática:
+
+Serialização manual de dados
+Interpretador binário simples
+
+👉 Objetivo: entender como o computador realmente executa código.
+
+🧩 8. Sistemas e Concorrência
+
+Entrando no território de sistemas reais.
+
+Conceitos:
+
+Threads (pthread)
+Sincronização (mutex, semáforo)
+Programação concorrente
+I/O não bloqueante
+
+Prática:
+
+Servidor TCP simples
+Sistema produtor-consumidor
+Thread pool
+
+👉 Objetivo: lidar com múltiplas tarefas simultâneas.
+
+🌐 9. Redes e Sistemas (nível avançado)
+
+Você já toca em engenharia de backend/sistemas.
+
+Conceitos:
+
+Sockets (socket, bind, listen, accept)
+TCP vs UDP
+Protocolos
+
+Prática:
+
+Servidor HTTP simples
+Chat via TCP
+Cliente/servidor estilo Node (você já começou nisso 😉)
+
+👉 Objetivo: entender como comunicação de rede funciona de verdade.
+
+🧪 10. Ferramentas Profissionais
+
+Sem isso, você sofre em projetos grandes.
+
+Ferramentas essenciais:
+
+gdb (debug)
+valgrind (memória)
+clang-format
+Sanitizers (-fsanitize)
+
+👉 Objetivo: encontrar bugs que você nem sabia que existiam.
+
+🚀 11. Projetos Avançados (nível real)
+
+Aqui você consolida tudo.
+
+Sugestões:
+
+Interpretador simples (tipo mini Lua)
+Shell (tipo bash)
+Banco de dados simples
+Servidor HTTP completo
+Sistema de arquivos virtual
+Motor de jogo básico
+📌 Dica importante (realista)
+
+C não é sobre “decorar sintaxe”.
+É sobre:
+
+entender memória
+prever comportamento
+evitar bugs invisíveis
+
+Se você já mexeu com sockets e cqueues, você já está tocando partes avançadas — então vale acelerar:
+
+👉 Foque pesado em:
+
+ponteiros + memória
+concorrência
+sistemas
+🧭 Ordem sugerida (resumo)
+Fundamentos
+Ponteiros
+Memória dinâmica
+Estruturas de dados
+Modularização
+Arquivos
+Baixo nível
+Concorrência
+Redes
+Projetos grandes

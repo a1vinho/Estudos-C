@@ -1,0 +1,41 @@
+- Na linguagem C existe uma função responsável pela execução de todo programa ou arquivo em C,essa função é chamada de main,ela é a função principal da linguagem.Essa função é o ponto de entrada de programa em C (entry point).
+- Quando executamos nosso código em C,o sistema operacional executa essa função que organiza as demais intruções do nosso programa.A função main pode ser escrita de duas formas principais,com ou sem argumentos (preparada para receber parametros do terminal).
+
+* Maneiras de escrever a função main {
+    - Sem argumentos é a forma mais simples de escrevemos a função principal,é quando não precisamos de dados ou interação externa. {
+        #include <stdio.h>
+
+        int main (void) {
+            printf("Hello world \n");
+
+            return 0
+        }
+        - Utilizamos a palavra chave void dentro dos paranteses para indicar ao programa que a função principal não recebe parametros.
+    }
+
+    - Com argumentos utilizamos quando queremos interação do usuário ou dados externos.{
+        #include <stdio.h>
+
+        int main(int argc,const char *argv[]) {
+            for (int i = 1;i < argc;i++) {
+                if (argv[i]) {
+                    printf("%s\n",argv[i]);
+                };
+            };
+            return 0;
+        };
+    }
+}
+
+- A maneira padronizada e recomendada de escrevemos a função principal é utilizando a palavra reservada int,isso por que o retorno da função vai indicar ao sistema operacional se ocorreu algum erro ou não. {
+    - Quando o retorno da função é 0,isso indica ao sistema operacional que nosso programa ocorreu sem encontrar nenhum erro ou falha.Qualquer valor diferente de zero indica que houve uma falha
+    - A melhor maneira de entendermos esse funcionamento é escrevendo um script simples em bash,onde caso a execução do programa seja zero ele retorna "sucesso",caso não seja zero ou qualquer valor diferente ele retorna "erro" {
+        if ./hello; then
+            echo "sucesso"
+        else
+            echo "Erro"
+        fi
+    }
+}
+
+- A função main da linguagem C é a função principal da linguagem,ela é a porta de entrada para permitir que o sistema operacional execute nosso programa.
