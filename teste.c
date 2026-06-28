@@ -1,10 +1,11 @@
-#include <stdio.h>
-
+# include <stdio.h>
 
 int main (void) {
-    int n = 3;
-    int *b = &n;
 
-    printf("%d\n",*b);
+    int nums[4] = {0,1,2,3};
+
+    char t;
+    printf("%d\n",nums[10]);
+    printf("%c\n",t);
     return 0;
 };

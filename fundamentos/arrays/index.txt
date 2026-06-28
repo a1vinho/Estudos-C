@@ -1,1 +1,98 @@
-- Na linguagem C,assim como em grandes partes das outras linguagens,temos os arrays.Os arrays são estruturas de dados com tamanho fixo,eles armazena uma sequencia de dados do mesmo tipo em uma única estrutura.Na linguagem C os arrays são armazenando na memória utilizando memória contigua.Isso significa que os dados são armazenados de forma sequencial e em blocos. 
+- Na linguagem C,assim como em grandes partes das outras linguagens,temos os arrays.Os arrays são estruturas de dados com tamanho fixo,eles armazena uma sequencia de dados do mesmo tipo em uma única estrutura.Na linguagem C os arrays são armazenando na memória utilizando memória contigua.Isso significa que os dados são armazenados de forma sequencial e em blocos.
+- Assim como na maiorias das outras linguagens de programação,o acesso a elementos dentro do array na linguagem c é feito por indice,começando sempre em 0.Podemos imagina os arrays como se fosse uma grande estante contendo livros,onde a estante seria o array e os livros seria os elementos dentro desse array.
+
+* Como declarar um array ? {
+    - type arrayName[arraySize];
+
+    type: O tipo de dado dos elementos no array (por exemplo, int, float, char). Isso determina que tipo de dado o array pode armazenar.
+
+    arrayName: O nome do array, que você usará para referenciar e manipular o array.
+
+    arraySize: O número de elementos que o array pode conter, definindo a capacidade total de armazenamento do array.
+
+
+    - Exemplo de declaração:
+
+    int numbers[4] = {2,3,1,4};
+
+    for (int index = 0;index < 4;index++) {
+        printf("%d",numbers[index]);
+    };
+
+    - Nesse exemplo estamos declarando um array de 4 elementos,logo em seguinda estamos acessando todos os seus elementos utilizando um loop for.
+} 
+
+* Na linguagem C existe 3 maneiras muito conhecidas de declaração de arrays: {
+    1 - Inicialização completa (a mais utilizada): {
+        - Esse tipo de declaração é quando conhecemos todos os elementos que vamos colocar dentro do nosso array.Atribuimos valores especificos para dentro do array no momento da sua criação.
+
+        int nums[3] = {1,2,3};
+    }
+    2 - Inicialização parcial: {
+        - Digamos que criamos um array com o total de 5 elementos,mas no momento só temos conhecimento de 3 elementos,não sabemos quais são os outros elementos que irão ocupar o restante do array.Para esse problema utilizamos a declaração parcial,criamos um array com um numero total de elementos,mas colocamos só os elementos que conhecemos.
+
+        int nums[5] = {2,4,1};
+
+        - Aqui criamos um array com 5 elementos,mas colocamos apenas 3 elementos,isso significa que ficou faltando 2 indices,nesse caso a linguagem C completa os indices que ficou sobrando com numeros 0
+    }
+    3 - Inicilaização zerada: {
+        - Podemos também inicializar nossos arrays com todos os elementos zerados.Isso geralmente é utilizado quando não sabemos quais elementos serão armazenado dentro do nosso array.
+
+        int nums[5] = {0};
+
+        - Todos os 5 indices do nosso array estão zerados.
+    }
+}
+
+- Além disso na linguagem C temos alguns tipos de arrays muito importantes,como vetores,matrizes e arrays de ponteiros.Abaixo iremos explica cada um deles,para que server e quando utiliza cada um dos tipos de arrays.
+
+* Tipos de arrays da linguagem C {
+    1 - Vetores: {
+        - Na linguagem C os vetores são array que contém apenas uma dimensão,são chamados de arrays unidimensionais.Eles são uma sequencia de dados de apenas uma única linha.Como vimos nos exemplos anteriores.Eles são a forma mais simples de um array.
+
+        - Os vetores são utilizados para armazena dados mais simples ou para fazer operações mais simples,mesmo que eles também seja muito utilizados em operações complexas.
+        int nums[4] = {1,3,2,1};
+
+        - Assim como todo array podemos utilizar o loop for para percorre um vetor.
+
+        for (int index = 0;index < 4;index ++) {
+            int temp = nums[index];
+
+            printf("Numero: %d\n",temp);
+        }
+    }
+    2 - Matrizes: {
+        - Na linguagem C temos as matrizes,diferentes do vetores as matrizes contém duas ou mais dimensões,geralmente as dimensões que compoe as matrizes são (altura e largura).As matrizes também armazena elementos do mesmo tipo.Assim como os vetores seus indices de linhas e colunas começam em 0
+        
+        - declarando uma matriz simples.
+
+        int nums[3][3] = {
+            {1,2,3},
+            {4,5,6},
+            {7,8,9}
+        } - Essa será uma matriz 3 por 3 (3x3)
+
+        - podemos utilizar também o loop for para acessar as matrizes,mas diferente dos vetores,dependendo da dimensão da matriz,teremos que utiliza dois ou mais loop for,para acessar seus elementos.Como temos apenas duas dimensões no exemplo acima,então utilizaremos dois for.
+
+        for (int coluna = 0;coluna < 3;coluna ++) {
+            for (int linha = 0; linha < 3;linha++) {
+                int temp = nums[coluna][linha];
+                printf("%d",temp);
+            }
+            printf("\n");
+        }
+
+        - As matrizes são estruturas de dados ideais para representa dados em forma de tabelas ou grade.As matrizes são utilizadas em programas de dados cientifico,jogos de tabuleiros e graficos,planilhas e dados tabulares,onde precisamos organizar os dados entre linhas e colunas.
+    }
+    3 - Array de ponteiros: {
+        - Na linguagem C temos um tipo de array muito exotico e diferente,os arrays de ponteiros.Ao contrarios dos vetores e matrizes convencionais,que armazena os dados de forma direta na estrutura.Os arrays de ponteiros não armazena os dados de forma direta e sim seus respectivos endereços de memória.
+    }
+}
+
+- A linguagem C é uma linguagem que permite que o programador gerencie a memória do computador manualmente.Isso significa que o programador tem total responsabilidade pelo que acontence no programa.Por exemplo,digamos que estamos definindo um array de 4 elementos,caso um usuário mal intecionando tente acessar indice que não existe ou que ainda não foi criado.Pode acontence uma serie de erros ou problemas,como buffer overflow,out-of-bounds read (leitura além do limite) e etc...A linguagem C por ser uma linguagem de baixo nivel,não faz esse trabalho,o proprio programador tem total responsabilidade em tudo que acontece dentro do código. {
+    int nums[4] = {2,3,1,4};
+
+    nums[6] = 100;
+
+    - Esse código tem uma vunerabilidade grave,estamos escrevendo no indice 6,mas esse indice não existe no nosso array.Isso pode acabar corrompendo dados,sobreescrevendo váriaveis existente ou corrompendo a memória do nosso programa.
+}
